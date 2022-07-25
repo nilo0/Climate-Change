@@ -16,6 +16,6 @@ class MyProcess:
                 self.logger.log("Process has finished successfully")
                 break
         else:
-            self.logger.error("Terminating the process...")
+            self.logger.error(f"Terminating the process after waiting for {t} seconds")
             self.process.terminate()
             self.process.join()
