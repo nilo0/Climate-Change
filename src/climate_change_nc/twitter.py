@@ -69,7 +69,7 @@ class MyTwitter:
                 tweets, meta = self._get_tweets(start, end, logger, next_token)
             except:
                 logger.error(f"Unable to retrieve the patch of {MAX_RESULTS} tweets.")
-                time.sleep(MIN_TIMEOUT)
+                time.sleep(15 * 60 / 450 + 1)  # Rate limit
                 continue
 
             logger.log(f"{len(tweets)} new tweets have been retrieved")
@@ -141,7 +141,7 @@ class MyTwitter:
                 del (params[NEXT_TOKEN_KEY])
 
         res = requests.get(TWEET_URL, params=params, headers=self.headers)
-        time.sleep(15 * 60 / 450)  # Rate limit
+        time.sleep(15 * 60 / 450 + 1)  # Rate limit
 
         if res.status_code == 200 and 'data' in res.json() and 'meta' in res.json():
             return res.json()['data'], res.json()['meta']
@@ -165,7 +165,7 @@ class MyTwitter:
         while True:
             try:
                 res = requests.get(REPLY_URL, params=params, headers=self.headers, timeout=20)
-                time.sleep(15 * 60 / 450)  # Rate limit
+                time.sleep(15 * 60 / 450 + 1)  # Rate limit
 
                 if res.status_code == 200 and 'data' in res.json():
                     replies += res.json()['data']
@@ -191,7 +191,7 @@ class MyTwitter:
             }
 
             res = requests.get(USER_FMT_URL.format(user_id), params=params, headers=self.headers)
-            time.sleep(15 * 60 / 900)  # Rate limit
+            time.sleep(15 * 60 / 900 + 1)  # Rate limit
 
             if res.status_code == 200 and 'data' in res.json():
                 return res.json()['data']
@@ -215,7 +215,7 @@ class MyTwitter:
         while True:
             try:
                 res = requests.get(QUOTE_FMT_URL.format(tweet_id), params=params, headers=self.headers, timeout=20)
-                time.sleep(15 * 60 / 75)
+                time.sleep(15 * 60 / 75 + 1)
 
                 if res.status_code == 200 and 'data' in res.json():
                     quotes += res.json()['data']
