@@ -90,13 +90,13 @@ class MyTwitter:
 
                 if 'conversation_id' in tweet and 'public_metrics' in tweet and 'reply_count' in tweet['public_metrics'] and int(tweet['public_metrics']['reply_count']) > 0:
                     logger.log(f"Retrieving {tweet['public_metrics']['reply_count']} replies from conversation {tweet['conversation_id']} of tweet {tweet['id']}")
-                    timeout = min(tweet['public_metrics']['reply_count'] % (MAX_RESULTS / 4) * MIN_TIMEOUT, MAX_TIMEOUT)
+                    timeout = min((tweet['public_metrics']['reply_count'] % (MAX_RESULTS / 4) + 1) * MIN_TIMEOUT, MAX_TIMEOUT)
                     p = MyProcess(self._get_and_write_replies, (tweet['conversation_id'], reply_csv, logger), logger)
                     p.timeout(timeout)
 
                 if 'public_metrics' in tweet and 'quote_count' in tweet['public_metrics'] and int(tweet['public_metrics']['quote_count']) > 0:
                     logger.log(f"Retrieving {tweet['public_metrics']['quote_count']} quotes of tweet {tweet['id']}")
-                    timeout = min(tweet['public_metrics']['quote_count'] % (MAX_RESULTS / 4) * MIN_TIMEOUT, MAX_TIMEOUT)
+                    timeout = min((tweet['public_metrics']['quote_count'] % (MAX_RESULTS / 4) + 1) * MIN_TIMEOUT, MAX_TIMEOUT)
                     p = MyProcess(self._get_and_write_quotes, (tweet['id'], quote_csv, logger), logger)
                     p.timeout(timeout)
 
