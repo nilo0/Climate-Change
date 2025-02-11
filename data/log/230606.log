@@ -1,0 +1,20 @@
+[230611-060001] Setting up csv files
+[230611-060001] Setting up the csv file with the following columns
+[230611-060001] id | author_id | conversation_id | created_at | lang | retweet_count | reply_count | like_count | quote_count | reply_settings | text
+[230611-060001] Setting up the csv file with the following columns
+[230611-060001] id | author_id | conversation_id | created_at | lang | retweet_count | reply_count | like_count | quote_count | referenced_tweets | text
+[230611-060001] Setting up the csv file with the following columns
+[230611-060001] id | author_id | conversation_id | created_at | lang | retweet_count | reply_count | like_count | quote_count | referenced_tweets | text
+[230611-060001] Setting up the csv file with the following columns
+[230611-060001] id | username | created_at | name | protected | verified | followers_count | following_count | tweet_count | listed_count | url | description
+[230611-060001] Retrieving tweets from 230606-000000 to 230607-000000
+[230611-060001] Retrieving a new set of tweets
+[230611-060005] [ERROR] Request has been failed (403)
+[230611-060005] [ERROR]  - url: https://api.twitter.com/2/tweets/search/recent
+[230611-060005] [ERROR]  - content: b'{"client_id":"24518954","detail":"When authenticating requests to the Twitter API v2 endpoints, you must use keys and tokens from a Twitter developer App that is attached to a Project. You can create a project via the developer portal.","registration_url":"https://developer.twitter.com/en/docs/projects/overview","title":"Client Forbidden","required_enrollment":"Appropriate Level of API Access","reason":"client-not-enrolled","type":"https://api.twitter.com/2/problems/client-forbidden"}'
+[230611-060005] 0 new tweets have been retrieved
+[230611-060005] Meta data of retrieved tweets
+[230611-060005] - Keys: dict_keys(['next_token'])
+[230611-060005] - Vals: dict_values([None])
+[230611-060005] Preparing to retrieve new batch of tweets...
+[230611-060005] The End.
